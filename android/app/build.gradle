@@ -37,6 +37,7 @@ android {
         applicationId "com.example.u_safe_seguranca"
         minSdkVersion 16
         targetSdkVersion 30
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -70,4 +71,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
 
     implementation 'com.google.firebase:firebase-analytics'
+
+    implementation "androidx.multidex:multidex:2.0.1"
 }
