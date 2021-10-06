@@ -18,11 +18,7 @@ class MyApp extends StatelessWidget {
         ),
         textTheme: const TextTheme(bodyText2: TextStyle(color: Colors.grey)),
       ),
-      /* theme: ThemeData(
-          primarySwatch: Colors.indigo,
-          primaryColor: Color.fromARGB(255, 63, 81, 181),
-          accentColor: Color.fromARGB(255, 255, 152, 0)), */
-      debugShowCheckedModeBanner: false,
+     debugShowCheckedModeBanner: false,
       home: HomeScreen(),
     );
   }
