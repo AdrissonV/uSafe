@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:u_safe_seguranca/tabs/user_tabs.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -8,11 +9,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   PageController _pageController = PageController(initialPage: 0);
   int _page = 0;
+  String _title = "";
+
+  final List<Widget> _children = [
+    MissionTab(),
+    ChatTab(),
+    PerfilTab(),
+  ];
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: 0);
+    _title = "";
   }
 
   @override
@@ -24,27 +33,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      /* appBar: AppBar(
-        title: const Text("MIssões"),
+      appBar: AppBar(
+        title: Text(_title),
+        centerTitle: true,
+        backgroundColor: Colors.indigo,
         actions: <Widget>[
           IconButton(
             onPressed: () {},
-            icon: Icon(
-              Icons.menu,
-            ),
+            icon: Icon(Icons.menu),
           ),
         ],
-      ), */
+      ),
+      body: _children[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
         backgroundColor: Colors.indigo,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white54,
-        onTap: (p) {
-          _pageController.animateToPage(p,
-              duration: Duration(milliseconds: 500), curve: Curves.ease);
-        },
+        onTap: onTabTapped,
         items: [
           BottomNavigationBarItem(
             label: 'Missão',
@@ -62,25 +68,29 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (p) {
-          setState(() {
-            _page = p;
-          });
-        },
-        children: [
-          Container(
-            color: Colors.amber,
-          ),
-          Container(
-            color: Colors.black,
-          ),
-          Container(
-            color: Colors.cyan,
-          ),
-        ],
-      ),
     );
+  }
+
+  void onTabTapped(int index) {
+    setState(() {
+      _page = index;
+      switch (index) {
+        case 0:
+          {
+            _title = 'Missões';
+          }
+          break;
+        case 1:
+          {
+            _title = 'Chat';
+          }
+          break;
+        case 2:
+          {
+            _title = 'Perfil';
+          }
+          break;
+      }
+    });
   }
 }
