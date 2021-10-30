@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:u_safe_seguranca/Widgets/mission_tile.dart';
+import 'package:u_safe/widgets/mission_tile.dart';
 
 class MissionTab extends StatelessWidget {
   Widget build(BuildContext context) {
