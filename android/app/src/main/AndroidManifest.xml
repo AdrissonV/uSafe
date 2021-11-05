@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.u_safe_seguranca">
+    package="br.com.araujo.u_safe">
    <application
-        android:label="u_safe_seguranca"
+        android:label="u_safe"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

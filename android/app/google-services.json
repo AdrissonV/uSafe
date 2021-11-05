@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "199541434703",
-    "project_id": "usafe-897d3",
-    "storage_bucket": "usafe-897d3.appspot.com"
+    "project_number": "936046310934",
+    "project_id": "usafe-d0341",
+    "storage_bucket": "usafe-d0341.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:199541434703:android:dd8d0911ea129cdc13bd3a",
+        "mobilesdk_app_id": "1:936046310934:android:841b6d9f4f6841d2706737",
         "android_client_info": {
-          "package_name": "com.example.u_safe_seguranca"
+          "package_name": "br.com.araujo.u_safe"
         }
       },
       "oauth_client": [
         {
-          "client_id": "199541434703-kbh6us5as2hki42i4msnbhqo595uf4t9.apps.googleusercontent.com",
+          "client_id": "936046310934-m66vgpgtk7meqlo4c8kcjo2uu69i3jrr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.u_safe_seguranca",
+            "package_name": "br.com.araujo.u_safe",
             "certificate_hash": "96fc82b4eb1eae6385609df460bf68fc709b1b3f"
           }
         },
         {
-          "client_id": "199541434703-rqdp6saq8ff4hs0pfrnadqssub88mai7.apps.googleusercontent.com",
+          "client_id": "936046310934-v8hlqlvfl7d4ti2ddnacm64f05qd9kfd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBD0t4BtI8p5Elu_Ycq5ex_KB_JqVFRvN8"
+          "current_key": "AIzaSyCu9T855E6_gC7UQ4FF-NT5VK6tlIn0kwk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "199541434703-rqdp6saq8ff4hs0pfrnadqssub88mai7.apps.googleusercontent.com",
+              "client_id": "936046310934-v8hlqlvfl7d4ti2ddnacm64f05qd9kfd.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
