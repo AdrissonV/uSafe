@@ -45,9 +45,13 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   keyboardType: TextInputType.emailAddress,
-                  validator: (text) {
-                    if (text!.isEmpty || !text.contains('@'))
-                      return "E-mail inválido";
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Insira seu e-mail!";
+                    } else if (!value.contains('@')) {
+                      return "Insira um e-mail válido";
+                    }
+                    return null;
                   },
                   style: TextStyle(color: Colors.white),
                 ),
@@ -67,9 +71,12 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   obscureText: true,
-                  validator: (text) {
-                    if (text!.isEmpty || text.length < 6)
-                      return "Senha inválida";
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Informe sua senha!";
+                    } else if (value.length < 6) {
+                      return "Sua senha deve ter no mínimo 6 caracteres";
+                    }
                   },
                   style: TextStyle(color: Colors.white),
                 ),
@@ -94,6 +101,8 @@ class LoginScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        login();
+
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => MissionScreen()));
                       }
@@ -144,4 +153,6 @@ class LoginScreen extends StatelessWidget {
           );
         }));
   }
+
+  login() {}
 }
