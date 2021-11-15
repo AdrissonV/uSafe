@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scoped_model/scoped_model.dart';
 import 'package:u_safe/screens/mission.dart';
 
 class SingUp2Screen extends StatefulWidget {
@@ -17,7 +16,6 @@ class _SingUp2ScreenState extends State<SingUp2Screen> {
   final _numController = TextEditingController();
   final _bairroController = TextEditingController();
 
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
 
   Widget build(BuildContext context) {
