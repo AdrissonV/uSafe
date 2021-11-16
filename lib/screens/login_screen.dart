@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
             child: Padding(
                 padding: EdgeInsets.all(30.0),
@@ -44,24 +44,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image(
-                        image: AssetImage('assets/logo.png'),
-                        height: 200.0,
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                        child: Image(
+                          image: AssetImage('assets/logo.png'),
+                          height: 200.0,
+                        ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(24),
+                        padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
                         child: TextFormField(
                           controller: email,
                           decoration: InputDecoration(
-                            hintText: "E-mail",
-                            hintStyle: TextStyle(color: Colors.black),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
-                            ),
-                          ),
+                              labelText: "E-mail",
+                              hintStyle: TextStyle(color: Colors.black),
+                              border: new OutlineInputBorder(
+                                borderRadius: new BorderRadius.circular(5.0),
+                                borderSide: new BorderSide(),
+                              )),
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -71,22 +71,19 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                             return null;
                           },
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(24),
+                        padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
                         child: TextFormField(
                           controller: senha,
                           decoration: InputDecoration(
-                            hintText: "Senha",
-                            hintStyle: TextStyle(color: Colors.white),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
+                            labelText: "Senha",
+                            hintStyle: TextStyle(color: Colors.black),
+                            border: new OutlineInputBorder(
+                                borderRadius: new BorderRadius.circular(5.0),
+                                borderSide: new BorderSide()),
                           ),
                           obscureText: true,
                           validator: (value) {
@@ -96,17 +93,23 @@ class _LoginScreenState extends State<LoginScreen> {
                               return "Sua senha deve ter no mínimo 6 caracteres";
                             }
                           },
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Esqueci minha senha",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                              color: Colors.white,
-                              decoration: TextDecoration.underline),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "Esqueci minha senha",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 255, 152, 0),
+                                  decoration: TextDecoration.underline),
+                            ),
+                          ),
                         ),
                       ),
                       Padding(
@@ -144,20 +147,23 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SingUpScreen()),
-                          );
-                        },
-                        child: Text(
-                          "Não possui uma conta? Cadastre-se aqui",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                              color: Colors.white,
-                              decoration: TextDecoration.underline),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SingUpScreen()),
+                            );
+                          },
+                          child: Text(
+                            "Não possui uma conta? Cadastre-se aqui",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 255, 152, 0),
+                                decoration: TextDecoration.underline),
+                          ),
                         ),
                       ),
                     ],
