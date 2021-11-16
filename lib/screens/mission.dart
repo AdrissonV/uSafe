@@ -1,6 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
+import 'package:u_safe/services/auth_services.dart';
 
-class MissionScreen extends StatelessWidget {
+class MissionScreen extends StatefulWidget {
+  MissionScreen({Key? key}) : super(key: key);
+
+  _MissionScreenState createState() => _MissionScreenState();
+}
+
+class _MissionScreenState extends State<MissionScreen> {
+  bool loading = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  logout() async {
+    setState(() => loading = true);
+    try {
+      await context.read<AuthService>().logout();
+    } on AuthException catch (e) {
+      setState(() => loading = false);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,9 +35,10 @@ class MissionScreen extends StatelessWidget {
       ),
       body: Center(child: Text('Vocjkjkjkjssões criadas')),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {},
-      ),
+          child: Icon(Icons.add),
+          onPressed: () {
+            logout();
+          }),
     );
   }
 }

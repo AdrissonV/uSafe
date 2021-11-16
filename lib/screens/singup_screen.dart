@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/src/provider.dart';
+import 'package:u_safe/screens/login_screen.dart';
 import 'package:u_safe/services/auth_services.dart';
 
 class SingUpScreen extends StatefulWidget {
@@ -15,6 +16,7 @@ class _SingUpScreen extends State<SingUpScreen> {
   final confSenha = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool loading = false;
+  bool confirmed = false;
 
   registrar() async {
     setState(() => loading = true);
@@ -27,10 +29,16 @@ class _SingUpScreen extends State<SingUpScreen> {
     }
   }
 
+  confirmarSenha(senha, confSenha) {
+    if (senha == confSenha) {
+      confirmed = true;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
             child: Padding(
                 padding: EdgeInsets.all(30.0),
@@ -44,19 +52,16 @@ class _SingUpScreen extends State<SingUpScreen> {
                         height: 200.0,
                       ),
                       Padding(
-                        padding: EdgeInsets.all(24),
+                        padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
                         child: TextFormField(
                           controller: email,
                           decoration: InputDecoration(
-                            hintText: "E-mail",
-                            hintStyle: TextStyle(color: Colors.black),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
-                            ),
-                          ),
+                              labelText: "E-mail",
+                              hintStyle: TextStyle(color: Colors.black),
+                              border: new OutlineInputBorder(
+                                borderRadius: new BorderRadius.circular(10.0),
+                                borderSide: new BorderSide(),
+                              )),
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -66,23 +71,20 @@ class _SingUpScreen extends State<SingUpScreen> {
                             }
                             return null;
                           },
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(24),
+                        padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
                         child: TextFormField(
                           controller: senha,
                           decoration: InputDecoration(
-                            hintText: "Senha",
-                            hintStyle: TextStyle(color: Colors.white),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
+                              labelText: "Senha",
+                              hintStyle: TextStyle(color: Colors.black),
+                              border: new OutlineInputBorder(
+                                borderRadius: new BorderRadius.circular(10.0),
+                                borderSide: new BorderSide(),
+                              )),
                           obscureText: true,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -91,17 +93,31 @@ class _SingUpScreen extends State<SingUpScreen> {
                               return "Sua senha deve ter no mínimo 6 caracteres";
                             }
                           },
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Esqueci minha senha",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                              color: Colors.white,
-                              decoration: TextDecoration.underline),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                        child: TextFormField(
+                          controller: confSenha,
+                          decoration: InputDecoration(
+                              labelText: "Confirmar senha",
+                              hintStyle: TextStyle(color: Colors.black),
+                              border: new OutlineInputBorder(
+                                borderRadius: new BorderRadius.circular(10.0),
+                                borderSide: new BorderSide(),
+                              )),
+                          obscureText: true,
+                          validator: (value) {
+                            confirmarSenha(value, senha.text);
+                            if (value!.isEmpty) {
+                              print(senha.text);
+                              return "Confirme sua senha!";
+                            } else if (confirmed == false) {
+                              return "As senhas devem ser iguais.";
+                            }
+                          },
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       Padding(
@@ -110,6 +126,11 @@ class _SingUpScreen extends State<SingUpScreen> {
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               registrar();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginScreen()),
+                              );
                             }
                           },
                           child: Row(
@@ -121,9 +142,7 @@ class _SingUpScreen extends State<SingUpScreen> {
                                       child: SizedBox(
                                         width: 24,
                                         height: 24,
-                                        child: CircularProgressIndicator(
-                                          color: Colors.white,
-                                        ),
+                                        child: CircularProgressIndicator(),
                                       ),
                                     )
                                   ]
@@ -131,26 +150,12 @@ class _SingUpScreen extends State<SingUpScreen> {
                                     Padding(
                                       padding: EdgeInsets.all(16.0),
                                       child: Text(
-                                        "Entrar",
+                                        "CRIAR CONTA",
                                         style: TextStyle(fontSize: 20),
                                       ),
                                     ),
                                   ],
                           ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => SingUpScreen()));
-                        },
-                        child: Text(
-                          "Não possui uma conta? Cadastre-se aqui",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                              color: Colors.white,
-                              decoration: TextDecoration.underline),
                         ),
                       ),
                     ],
