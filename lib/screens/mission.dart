@@ -31,9 +31,13 @@ class _MissionScreenState extends State<MissionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sajhgjhdfkjgdf'),
+        title: const Text('Missões'),
       ),
-      body: Center(child: Text('Vocjkjkjkjssões criadas')),
+      body: Center(
+          child: Text(
+        'Você não possuí missões criadas',
+        style: TextStyle(color: Colors.grey),
+      )),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {

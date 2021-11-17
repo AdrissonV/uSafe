@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:u_safe/screens/login_screen.dart';
 import 'package:u_safe/screens/mission.dart';
+import 'package:u_safe/screens/singup_screen.dart';
 import 'package:u_safe/services/auth_services.dart';
 
 class AuthCheck extends StatefulWidget {
@@ -9,6 +10,10 @@ class AuthCheck extends StatefulWidget {
 
   @override
   _AuthCheckState createState() => _AuthCheckState();
+}
+
+_navigationMissionScreen() async* {
+  await MaterialPageRoute(builder: (context) => MissionScreen());
 }
 
 class _AuthCheckState extends State<AuthCheck> {

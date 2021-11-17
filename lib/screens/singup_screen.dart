@@ -47,9 +47,12 @@ class _SingUpScreen extends State<SingUpScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image(
-                        image: AssetImage('assets/logo.png'),
-                        height: 200.0,
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                        child: Image(
+                          image: AssetImage('assets/logo.png'),
+                          height: 200.0,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
@@ -121,16 +124,11 @@ class _SingUpScreen extends State<SingUpScreen> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 50.0, right: 50.0),
+                        padding: EdgeInsets.fromLTRB(50, 100, 50, 0),
                         child: ElevatedButton(
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               registrar();
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => LoginScreen()),
-                              );
                             }
                           },
                           child: Row(
@@ -150,7 +148,7 @@ class _SingUpScreen extends State<SingUpScreen> {
                                     Padding(
                                       padding: EdgeInsets.all(16.0),
                                       child: Text(
-                                        "CRIAR CONTA",
+                                        "Criar conta",
                                         style: TextStyle(fontSize: 20),
                                       ),
                                     ),
